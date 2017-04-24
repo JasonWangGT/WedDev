@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Calculator website!</title>
+        <style>
+            fade {
+                margin: 3px;
+                width: 80px;
+                display: none;
+                height: 80px;
+                float: left;
+            }
+            #one {
+                background: #f00;
+            }
+            #two {
+                background: #0f0;
+            }
+            #three {
+                background: #00f;
+            }
+            
+            #area 
+            {
+                margin-top: 50px;
+                margin-left: 100px;
+                width:900px;
+                height:300px;
+                border: 1px solid black;
+            }
+            
+            #box1
+            {   
+                margin-top: 10px;
+                margin-left: 50px;
+                width:100px;
+                height:100px;
+                background:blue;
+                border: 1px solid black;
+            }
+            
+            #box2
+            {   
+                margin-top: 10px;
+                margin-left: 50px;
+                width:100px;
+                height:100px;
+                background:red;
+                border: 1px solid black;
+            }
+            
+            #box3
+            {   
+                margin-top: 10px;
+                margin-left: 50px;
+                width:100px;
+                height:100px;
+                background:green;
+                border: 1px solid black;
+            }
+            
+            #box4
+            {   
+                margin-top: 10px;
+                margin-left: 50px;
+                width:100px;
+                height:100px;
+                background:pink;
+                border: 1px solid black;
+            }
+        </style>
+        
+        <link rel="stylesheet" href="jquery-ui.css">
+        <script src="jquery-3.2.1.min.js"></script>
+        <script src="jquery-ui.js"></script>
+        <script>
+            $(document).ready(function() {
+                
+                $(".item").draggable({
+                    helper: "clone",
+                    cursor: 'move',
+                });
+                
+                $("#area").droppable({
+                    tolerance: "fit",
+                    drop: function (event, ui) {
+                        var $canvas = $(this);
+                        if (!ui.draggable.hasClass('canvas-element')) {
+                            var $canvasElement = ui.draggable.clone();
+                            $canvasElement.addClass('canvas-element');
+                            $canvasElement.draggable({
+                                containment: '#container'
+                            });
+                            $canvas.append($canvasElement);
+                            $canvasElement.css({
+                                left: (ui.position.left),
+                                top: (ui.position.top),
+                                position: 'absolute'
+                            });
+                        }
+                    }
+                    
+                    
+                })
+//                $("#area").droppable({accept:"#box1", drop:function(){
+//                    alert("add");
+//                    
+//                }});
+//                $("#area").droppable({accept:"#box2", drop:function(){
+//                    alert("subtract");
+//                }});
+//                $("#area").droppable({accept:"#box3", drop:function(){
+//                    alert("foo");
+//                }});
+//                $("#area").droppable({accept:"#box4", drop:function(){
+//                    $("box4").append(" <b>Appended text</b>.");
+//                }});
+            });
+        </script>
+    </head>
+
+    
+    
+    <body>
+        <div id="one" class="fade"></div>
+        <div id="two" class="fade"></div>
+        <div id="three" class="fade"></div>
+        <div id="area"></div>
+        <div id="box1" class="item"></div>
+        <div id="box2" class="item"></div>
+        <div id="box3" class="item"></div>
+        <div id="box4" class="item"></div>
+        
+        <input type="text" placeholder="first parameter..." name="firstpara"><br>
+        <input type="text" placeholder="second parameter..." name="secondpa"><br>
+    </body>
+
+</html>
