@@ -1,59 +1,85 @@
 <!DOCTYPE html>
 <html>
-
     <head>
-        <title>My first blog post</title>
-        <link rel = "stylesheet" type = "text/css" href = "style.css">
-    
-    </head>
-    
-    
-    <body> 
-        <div class = "container">
-            
-            <div class = "blog-post">
-            
-                <h1>My first blog post</h1>
-                
-                <p class = "date">Apr 16th, 2017</p>
-                
-                <h2>This is my first blog yo yo yo!</h2>
-
-                <p class = "main-text"> 
-
-                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc,
-                </p>
-                <img src = "logo.jpg" alt="logo image">
-
-                <a href = "http://www.udemy.com" target = "_blank">Link to Udemy</a>
-
-                <a href = "logo.jpg" target = "_blank">Link to logo jpg</a>
-
-                <h2>yo yo yo </h2>
-
-                <p class = "main-text">
-                    this is <em>li hai</em> text.<br>
-                    <br>
-                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc,
-                </p>
-            </div>
-            
-            <div class = "other-post">
-                dummy post
-            </div>
-            
-            <div class = "clearfix"></div>
-            
-            <div class = "author-post">
-                <img src ="author.jpg" alt=" author image">
-                <p class = "author-text">Author: Jane</p>
-            </div>
-            
-            
-        </div>
+        <title>Calculator website!</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="jquery-ui.css">
+        <script src="jquery-3.2.1.min.js"></script>
+        <script src="jquery-ui.js"></script>
+        <script>
+            $(document).ready(function() {
         
+//                $("#clear").appendTo("#area");
+                $(".operator-btn").draggable({
+                    helper: "clone",
+                    cursor: 'move',
+                });
+                
+                var res = 0;
+                $("#area").droppable({
+                    drop: function (event, ui) {
+                        var $canvas = $(this);
+                        
+                        if($('.operator-btn').attr('id') == 'add'){
+                            console.log("add");
+                            
+                            $canvas.append('<input type="text" id="input1" class="input" name="fname">');
+                            $canvas.append('<input type="text" id="input2" class="input" name="fname">');
+//                            if (ui.draggable.hasClass('canvas-element')) {
+//                                $(this).appendTo("#input1");
+//                            }
+                            var first = $('#input1').val();
+                            var second = $('#input2').val();
+                            res = parseInt(first) + parseInt(second);
+                        }
+                        else if($('.operator-btn').attr('id') == 'subtract'){
+                            console.log("subtract");
+                            $canvas.append('<input type="text" id="input3" class="input" name="fname">');
+                            $canvas.append('<input type="text" id="input4" class="input" name="fname">');
+                        }
+                        else if($('.operator-btn').attr('id') == 'foo'){
+                            console.log("foo");
+                            $canvas.append('<input type="text" id="input5" class="input" name="fname">');
+                        }
+                        else{
+                            console.log("doSthComplicated");
+                            $canvas.append('<input type="text" id="input6" class="input" name="fname">');
+                        }
+
+                        if (!ui.draggable.hasClass('canvas-element')) {
+                            var $canvasElement = ui.draggable.clone();
+                            $canvasElement.addClass('canvas-element');
+                            $canvasElement.draggable({
+                                containment: '#container'
+                            });
+                            $canvas.append($canvasElement);
+                            $canvasElement.css({
+                                left: (ui.position.left),
+                                top: (ui.position.top),
+                            });
+                        }
+                    }  
+                });
+                
+                $("button").click(function(){
+                    console.log(parseInt(res), "hello");        //print the result, e.g addition, subtraction and complex result 
+                    $( "#area" ).empty();
+                });
+            });
+        </script>
+    </head>
+
+    
+    
+    <body>
+        <div id="area"></div>
+        <div id="operation-panel">
+            <div id="add" class="operator-btn"><p>add</p></div>
+            <div id="subtract" class="operator-btn"><p>subtract</p></div>
+            <div id="foo" class="operator-btn"><p>foo</p></div>
+            <div id="dosthcomplicated" class="operator-btn"><p>DoSthComplicated</p></div>
+            <button id="clear">clear</button>
+        </div>
     </body>
-
-
 
 </html>

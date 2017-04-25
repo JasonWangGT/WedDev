@@ -1,77 +1,110 @@
-* {
-    width: 1140px;
-    margin-left: auto;
-    margin-right: auto;
+#operation-panel {
+    display: flex;
+    margin-left: 50px;
 }
 
-.clearfix: after {
-    content: "";
-    display: table;
-    clear:both;
+.operator-btn{
+    margin-top: 10px;
+    margin-left: 50px;
+    width:160px;
+    height:50px;
+    border-radius: 8px;
+    font-family: roboto;
+    text-align: center;
 }
 
-body {
-    font-family: Arial;
-    font size:20px;
+#add
+{   
+    background: rgba(33, 150, 243, 0.59);
 }
 
-h1,h2 {
-    font-size: 30px;
+#subtract
+{   
+    background: rgba(255, 111, 0, 0.73);
 }
 
-h1 {
-    font-size: 40px;
-    color:green;
-    margin-bottom: 20px;
-}
-p {
-    font size:30px;
-    text-align: justify;
+#foo
+{   
+    background: rgba(76, 175, 80, 0.9);
 }
 
-
-h2 {
-    color:#1ce09c;
-    margin-bottom: 10px;
+#dosthcomplicated
+{   
+    background:pink;
 }
 
-.main-text {
-    text-align: justify;
-    margin-bottom: 20px;
+#input1
+{
+    width:80px;
+    height:20px;
+    margin-left: 250px;
+    margin-top: 100px;
+    border: 1px solid black;
 }
 
-.author-text {
-    font-size: 34px;
+#input2
+{
+    width:80px;
+    height:20px;
+    margin-left: 50px;
+    margin-top: 100px;
+    border: 1px solid black;
 }
 
+#input3
+{
+    width:80px;
+    height:20px;
+    margin-left: 250px;
+    margin-top: 100px;
+    border: 1px solid black;
+}
 
-.container {
-    width:1140px;
-    margin-left: auto;
-    margin-right: auto;
+#input4
+{
+    width:80px;
+    height:20px;
+    margin-left: 50px;
+    margin-top: 100px;
+    border: 1px solid black;
+}
+
+#input5
+{
+    width:80px;
+    height:20px;
+    margin-left: 50px;
+    margin-top: 100px;
+    border: 1px solid black;
+}
+
+#input6
+{
+    width:80px;
+    height:20px;
+    margin-left: 50px;
+    margin-top: 100px;
+    border: 1px solid black;
+}
+
+#area 
+{
+    margin-top: 50px;
+    margin-left: 100px;
+    margin-right: 100px;
+    height:300px;
+    border: 1px solid black;
+}
+
+#clear 
+{
     margin-top: 20px;
-    margin:20px auto 0 auto;
+    margin-left: 130px;
+    height:50px;
+    border-radius: 4px;
+    padding: 10px 40px;
+    border: 1px solid black;
+    background: white;
+    font-size: larger;
 }
 
-.blog-post {
-    width:75%;
-    float: left;
-    padding-right: 30px;
-    position: relative;
-}
-
-.other-post {
-    width:25%;
-    float: left;
-}
-
-.author-post {
-    padding-top: 20px;
-    border-top: 1px solid #801717
-}
-
-.date {
-    position: absolute;
-    top: 10px;
-    right: 30px;
-}
