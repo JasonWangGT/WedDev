@@ -67,6 +67,15 @@
                 border: 1px solid black;
             }
             
+            #clear 
+            {
+                margin-top: 30px;
+                margin-left: 600px;
+                width:50px;
+                height:30px;
+                border: 1px solid black;
+            }
+            
             #box1
             {   
                 margin-top: 10px;
@@ -113,19 +122,29 @@
         <script src="jquery-ui.js"></script>
         <script>
             $(document).ready(function() {
+        
+//                $("#clear").appendTo("#area");
                 $(".item").draggable({
                     helper: "clone",
                     cursor: 'move',
                 });
                 
-                
+                var res = 0;
                 $("#area").droppable({
                     drop: function (event, ui) {
                         var $canvas = $(this);
+                        
                         if($('.item').attr('id') == 'box1'){
                             console.log("add");
+                            
                             $canvas.append('<input type="text" id="input1" class="input" name="fname">');
                             $canvas.append('<input type="text" id="input2" class="input" name="fname">');
+//                            if (ui.draggable.hasClass('canvas-element')) {
+//                                $(this).appendTo("#input1");
+//                            }
+                            var first = $('#input1').val();
+                            var second = $('#input2').val();
+                            res = parseInt(first) + parseInt(second);
                         }
                         else if($('.item').attr('id') == 'box2'){
                             console.log("subtract");
@@ -156,35 +175,10 @@
                     }  
                 });
                 
-//                $("#area").droppable({accept:"#box2",
-//                    drop: function (event, ui) {
-//                        console.log("dropped");
-//                        var $canvas = $(this);
-//                        $canvas.append('<input type="text" id="input3" class="input" name="fname">');
-//                        $canvas.append('<input type="text" id="input4" class="input" name="fname">');
-//                        if (!ui.draggable.hasClass('canvas-element')) {
-//                            var $canvasElement = ui.draggable.clone();
-//                            $canvasElement.addClass('canvas-element');
-//                            $canvasElement.draggable({
-//                                containment: '#container'
-//                            });
-//                            $canvas.append($canvasElement);
-//                            $canvasElement.css({
-//                                left: (ui.position.left),
-//                                top: (ui.position.top),
-//                            });
-//                        }
-//                    }  
-//                });
-//                $("#area").droppable({accept:"#box2", drop:function(){
-//                    alert("subtract");
-//                }});
-//                $("#area").droppable({accept:"#box3", drop:function(){
-//                    alert("foo");
-//                }});
-//                $("#area").droppable({accept:"#box4", drop:function(){
-//                    $("box4").append(" <b>Appended text</b>.");
-//                }});
+                $("button").click(function(){
+                    console.log(parseInt(res), "hello");        //print the result, e.g addition, subtraction and complex result 
+                    $( "#area" ).empty();
+                });
             });
         </script>
     </head>
@@ -193,6 +187,7 @@
     
     <body>
         <div id="area"></div>
+        <button id="clear">clear</button>
         <div id="box1" class="item"><p>add</p></div>
         <div id="box2" class="item"><p>subtract</p></div>
         <div id="box3" class="item"><p>foo</p></div>
