@@ -3,21 +3,59 @@
     <head>
         <title>Calculator website!</title>
         <style>
-            fade {
-                margin: 3px;
-                width: 80px;
-                display: none;
-                height: 80px;
-                float: left;
+            
+            #input1
+            {
+                width:80px;
+                height:20px;
+                margin-left: 250px;
+                margin-top: 100px;
+                border: 1px solid black;
             }
-            #one {
-                background: #f00;
+            
+            #input2
+            {
+                width:80px;
+                height:20px;
+                margin-left: 50px;
+                margin-top: 100px;
+                border: 1px solid black;
             }
-            #two {
-                background: #0f0;
+            
+            #input3
+            {
+                width:80px;
+                height:20px;
+                margin-left: 250px;
+                margin-top: 100px;
+                border: 1px solid black;
             }
-            #three {
-                background: #00f;
+            
+            #input4
+            {
+                width:80px;
+                height:20px;
+                margin-left: 50px;
+                margin-top: 100px;
+                border: 1px solid black;
+            }
+            
+            #input5
+            {
+                width:80px;
+                height:20px;
+                margin-left: 50px;
+                margin-top: 100px;
+                border: 1px solid black;
+            }
+            
+            #input6
+            {
+                width:80px;
+                height:20px;
+                margin-left: 50px;
+                margin-top: 100px;
+                border: 1px solid black;
             }
             
             #area 
@@ -75,16 +113,34 @@
         <script src="jquery-ui.js"></script>
         <script>
             $(document).ready(function() {
-                
                 $(".item").draggable({
                     helper: "clone",
                     cursor: 'move',
                 });
                 
+                
                 $("#area").droppable({
-                    tolerance: "fit",
                     drop: function (event, ui) {
                         var $canvas = $(this);
+                        if($('.item').attr('id') == 'box1'){
+                            console.log("add");
+                            $canvas.append('<input type="text" id="input1" class="input" name="fname">');
+                            $canvas.append('<input type="text" id="input2" class="input" name="fname">');
+                        }
+                        else if($('.item').attr('id') == 'box2'){
+                            console.log("subtract");
+                            $canvas.append('<input type="text" id="input3" class="input" name="fname">');
+                            $canvas.append('<input type="text" id="input4" class="input" name="fname">');
+                        }
+                        else if($('.item').attr('id') == 'box3'){
+                            console.log("foo");
+                            $canvas.append('<input type="text" id="input5" class="input" name="fname">');
+                        }
+                        else{
+                            console.log("doSthComplicated");
+                            $canvas.append('<input type="text" id="input6" class="input" name="fname">');
+                        }
+
                         if (!ui.draggable.hasClass('canvas-element')) {
                             var $canvasElement = ui.draggable.clone();
                             $canvasElement.addClass('canvas-element');
@@ -95,17 +151,31 @@
                             $canvasElement.css({
                                 left: (ui.position.left),
                                 top: (ui.position.top),
-                                position: 'absolute'
                             });
                         }
-                    }
-                    
-                    
-                })
-//                $("#area").droppable({accept:"#box1", drop:function(){
-//                    alert("add");
-//                    
-//                }});
+                    }  
+                });
+                
+//                $("#area").droppable({accept:"#box2",
+//                    drop: function (event, ui) {
+//                        console.log("dropped");
+//                        var $canvas = $(this);
+//                        $canvas.append('<input type="text" id="input3" class="input" name="fname">');
+//                        $canvas.append('<input type="text" id="input4" class="input" name="fname">');
+//                        if (!ui.draggable.hasClass('canvas-element')) {
+//                            var $canvasElement = ui.draggable.clone();
+//                            $canvasElement.addClass('canvas-element');
+//                            $canvasElement.draggable({
+//                                containment: '#container'
+//                            });
+//                            $canvas.append($canvasElement);
+//                            $canvasElement.css({
+//                                left: (ui.position.left),
+//                                top: (ui.position.top),
+//                            });
+//                        }
+//                    }  
+//                });
 //                $("#area").droppable({accept:"#box2", drop:function(){
 //                    alert("subtract");
 //                }});
@@ -122,17 +192,11 @@
     
     
     <body>
-        <div id="one" class="fade"></div>
-        <div id="two" class="fade"></div>
-        <div id="three" class="fade"></div>
         <div id="area"></div>
-        <div id="box1" class="item"></div>
-        <div id="box2" class="item"></div>
-        <div id="box3" class="item"></div>
-        <div id="box4" class="item"></div>
-        
-        <input type="text" placeholder="first parameter..." name="firstpara"><br>
-        <input type="text" placeholder="second parameter..." name="secondpa"><br>
+        <div id="box1" class="item"><p>add</p></div>
+        <div id="box2" class="item"><p>subtract</p></div>
+        <div id="box3" class="item"><p>foo</p></div>
+        <div id="box4" class="item"><p>DoSthComplicated</p></div>
     </body>
 
 </html>
