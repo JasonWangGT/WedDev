@@ -18,46 +18,68 @@
                 var res = 0;
                 $("#area").droppable({
                     drop: function (event, ui) {
+                        $( "#area" ).empty();
                         var $canvas = $(this);
-                        
-                        if($('.operator-btn').attr('id') == 'add'){
-                            console.log("add");
-                            
-                            $canvas.append('<input type="text" id="input1" class="input" name="fname">');
-                            $canvas.append('<input type="text" id="input2" class="input" name="fname">');
-//                            if (ui.draggable.hasClass('canvas-element')) {
-//                                $(this).appendTo("#input1");
-//                            }
-                            var first = $('#input1').val();
-                            var second = $('#input2').val();
-                            res = parseInt(first) + parseInt(second);
-                        }
-                        else if($('.operator-btn').attr('id') == 'subtract'){
-                            console.log("subtract");
-                            $canvas.append('<input type="text" id="input3" class="input" name="fname">');
-                            $canvas.append('<input type="text" id="input4" class="input" name="fname">');
-                        }
-                        else if($('.operator-btn').attr('id') == 'foo'){
-                            console.log("foo");
-                            $canvas.append('<input type="text" id="input5" class="input" name="fname">');
-                        }
-                        else{
-                            console.log("doSthComplicated");
+
+                        if($('.operator-btn').attr('id') == 'doSthComplicated')
+                        {
+                            console.log("do something doSthComplicated");
                             $canvas.append('<input type="text" id="input6" class="input" name="fname">');
                         }
+                        else
+                        {
+                            console.log($('.operator-btn').attr('id'));
+                            $canvas.append('<input type="text" id="input1" class="input" name="fname">');
+                            $canvas.append('<input type="text" id="input2" class="input" name="fname">');
 
-                        if (!ui.draggable.hasClass('canvas-element')) {
-                            var $canvasElement = ui.draggable.clone();
-                            $canvasElement.addClass('canvas-element');
-                            $canvasElement.draggable({
-                                containment: '#container'
-                            });
-                            $canvas.append($canvasElement);
-                            $canvasElement.css({
-                                left: (ui.position.left),
-                                top: (ui.position.top),
-                            });
+                            var $btn = $('<button/>')
+                                .text($('.operator-btn').attr('id'))
+                                .click(function () {
+                                    num1 = parseInt($('#input1').val(), 10);
+                                    num2 = parseInt($('#input2').val(), 10);
+                                    var res;
+                                    console.log($('.operator-btn').attr('id'));
+
+                                    if($('.operator-btn').attr('id') == 'add-btn')
+                                    {
+                                        res = num1 + num2;
+                                    }
+                                    else if($('.operator-btn').attr('id') == 'subtract-btn')
+                                    {
+                                        res = num1 - num2;
+                                    }
+                                    else if($('.operator-btn').attr('id') == 'foo-btn')
+                                    {
+                                        res = $('#input1').val() + $('#input2').val();
+                                    }
+                                    else
+                                    {
+                                        console.log('else');
+                                    }
+                                    $('#area').append('<div id="result">' + res + '</div');
+                                });
+                            $btn.attr('id', $('.operator-btn').attr('id') + '-btn');
+                            $btn.addClass('operator-btn');
+                            $canvas.append($btn);
+
+
+                            // var $canvasElement = ui.draggable.clone();
+                            // $canvasElement.addClass('canvas-element');
+                            // $canvasElement.draggable({
+                            //     containment: '#container'
+                            // });
+                            // $canvasElement.attr('id', $('.operator-btn').attr('id') + '-btn');
+                            // $canvas.append($canvasElement);
                         }
+
+                        // if (!ui.draggable.hasClass('canvas-element')) {
+                        //     var $canvasElement = ui.draggable.clone();
+                        //     $canvasElement.addClass('canvas-element');
+                        //     $canvasElement.draggable({
+                        //         containment: '#container'
+                        //     });
+                        //     $canvas.append($canvasElement);
+                        // }
                     }  
                 });
                 
@@ -65,14 +87,20 @@
                     console.log(parseInt(res), "hello");        //print the result, e.g addition, subtraction and complex result 
                     $( "#area" ).empty();
                 });
+
+
             });
+
+            
         </script>
     </head>
 
     
     
     <body>
-        <div id="area"></div>
+        <div id="area">
+            <div id="result"></div>
+        </div>
         <div id="operation-panel">
             <div id="add" class="operator-btn"><p>add</p></div>
             <div id="subtract" class="operator-btn"><p>subtract</p></div>

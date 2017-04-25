@@ -1,42 +1,58 @@
 #operation-panel {
     display: flex;
-    margin-left: 50px;
+    margin-left: 60px;
 }
 
 .operator-btn{
     margin-top: 10px;
-    margin-left: 50px;
+    margin-left: 40px;
     width:160px;
     height:50px;
     border-radius: 8px;
     font-family: roboto;
+    font-size: 16px;
     text-align: center;
+    border: none;
 }
 
-#add
+#add, #add-btn
 {   
     background: rgba(33, 150, 243, 0.59);
 }
 
-#subtract
+#subtract, #subtract-btn
 {   
     background: rgba(255, 111, 0, 0.73);
 }
 
-#foo
+#foo, #foo-btn
 {   
     background: rgba(76, 175, 80, 0.9);
 }
 
-#dosthcomplicated
+#dosthcomplicated, #dosthcomplicated-btn
 {   
     background:pink;
 }
 
+#add-btn, #subtract-btn, #foo-btn {
+    font-size: larger;
+}
+
+#result {
+    font-size: 36px;
+    font-family: roboto;
+    color: black;
+    text-align: center;
+    margin-top: 60px;
+}
+
 #input1
 {
-    width:80px;
-    height:20px;
+    width:120px;
+    height:40px;
+    font-size: 16px;
+    padding-left: 8px;
     margin-left: 250px;
     margin-top: 100px;
     border: 1px solid black;
@@ -44,11 +60,19 @@
 
 #input2
 {
-    width:80px;
-    height:20px;
+    width:120px;
+    height:40px;
+    font-size: 16px;
+    padding-left: 8px;
     margin-left: 50px;
     margin-top: 100px;
     border: 1px solid black;
+}
+
+.canvas-element {
+    margin-left: 50px;
+    margin-top: 100px;
+    display: inline-block;
 }
 
 #input3
