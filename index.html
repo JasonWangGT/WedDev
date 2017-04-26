@@ -22,10 +22,20 @@
                         $( "#area" ).empty();
                         var $canvas = $(this);
 
-                        if(draggableID == 'doSthComplicated')
+                        if(draggableID == 'dosthcomplicated')
                         {
                             console.log("do something doSthComplicated");
-                            $canvas.append('<input type="text" id="input6" class="input" name="fname">');
+                            $canvas.append('<input type="text" id="input1" class="input" name="fname">');
+                            var $btn = $('<button/>')
+                                .text(draggableID)
+                                .click(function () {
+                                    num = parseInt($('#input1').val(), 10);
+                                    $('#area').append('<div id="result">' + Math.pow(num, 2) + '</div');
+                            });
+
+                            $btn.attr('id', draggableID + '-btn');
+                            $btn.addClass('operator-btn');
+                            $canvas.append($btn);           
                         }
                         else
                         {
@@ -47,14 +57,11 @@
                                     {
                                         res = num1 - num2;
                                     }
-                                    else if($('.operator-btn').attr('id') == 'foo-btn')
+                                    else
                                     {
                                         res = $('#input1').val() + $('#input2').val();
                                     }
-                                    else
-                                    {
-                                        console.log('else');
-                                    }
+                                    
                                     $('#area').append('<div id="result">' + res + '</div');
                                 });
                             $btn.attr('id', draggableID + '-btn');
