@@ -1,1 +1,1 @@
-# WedDev Demo website using jQuery framework
+# Web application using jQuery framework
